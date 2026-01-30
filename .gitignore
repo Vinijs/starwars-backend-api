@@ -1,0 +1,51 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs / Editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependências
+/vendor/
+node_modules/
+
+# Ambiente
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+storage/logs/
+
+# Cache / Sessões (PHP/Laravel-like)
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# Uploads / arquivos gerados
+public/uploads/
+tmp/
+temp/
+
+# Testes
+.phpunit.result.cache
+
+# Build / distribuição
+/dist/
+/build/
+
+# WSL / Linux
+*.swp
+*.swo
+
+# Python virtual environment
+venv/
+.env/
+__pycache__/
+*.pyc
