@@ -16,4 +16,18 @@ venv\Scripts\activate     # Windows
 
 pip install -r requirements.txt
 flask --app app.main run
-# starwars-backend-api
+
+## Endpoints disponíveis
+
+### 🎬 Filmes
+
+- **GET /films**  
+  Retorna todos os filmes da saga Star Wars.
+
+- **GET /films?search=hope**  
+  Retorna filmes filtrados pelo título.
+
+#### Respostas possíveis
+- `200 OK` — sucesso
+- `404 Not Found` — filme não encontrado
+
