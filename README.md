@@ -31,3 +31,10 @@ flask --app app.main run
 - `200 OK` — sucesso
 - `404 Not Found` — filme não encontrado
 
+## Exemplos de uso
+
+GET /films
+GET /films?search=hope
+GET /people?page=2
+GET /people?order=name
+
