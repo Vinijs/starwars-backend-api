@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
-from app.services.swapi_service import get_films, search_films
-from app.services.people_service import get_people, search_people, order_people
+from app.services.swapi_service import get_swapi_resource
+from app.helpers.filters import filter_by_search
+from app.helpers.people_helper import list_people
 
 app = Flask(__name__)
 
@@ -11,16 +12,16 @@ def home():
     })
 
 @app.route("/films")
-def films():
+def get_films():
     search = request.args.get("search")
+    films = get_swapi_resource("films")
 
-    if search:
-        results = search_films(search)
-        if not results:
-            return jsonify({"message": "No films found"}), 404
-        return jsonify(results)
+    filtered = filter_by_search(films, search, field="title")
+
+    if search and not filtered:
+        return jsonify({"message" : "Filme não encontrado"}), 404
     
-    return jsonify(get_films())
+    return jsonify(filtered)
 
 @app.route("/people")
 def people():
@@ -28,16 +29,11 @@ def people():
     page = request.args.get("page")
     order = request.args.get("order")
 
-    if search:
-        data = search_people(search, page)
-    else:
-        data = get_people(page)
-
-    results = data.get("results", [])
-
-    if order:
-        results = order_people(results, order)
-        data["results"] = results
+    data = list_people(
+        search=search,
+        page=page,
+        order=order
+    )
         
     
     return jsonify(data)

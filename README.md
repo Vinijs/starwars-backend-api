@@ -38,3 +38,10 @@ GET /films?search=hope
 GET /people?page=2
 GET /people?order=name
 
+## Arquitetura
+
+- `main.py`: definição das rotas HTTP
+- `services/`: integração com APIs externas (SWAPI)
+- `helpers/`: funções reutilizáveis de filtros e regras comuns
+
+O projeto foi refatorado para evitar duplicação de código, utilizando helpers reutilizáveis para filtros e serviços dedicados para integração com a SWAPI.
