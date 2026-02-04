@@ -16,6 +16,7 @@ venv\Scripts\activate     # Windows
 
 pip install -r requirements.txt
 flask --app app.main run
+```
 
 ## Endpoints disponíveis
 
@@ -45,3 +46,29 @@ GET /people?order=name
 - `helpers/`: funções reutilizáveis de filtros e regras comuns
 
 O projeto foi refatorado para evitar duplicação de código, utilizando helpers reutilizáveis para filtros e serviços dedicados para integração com a SWAPI.
+
+### Ativando o ambiente virtual
+
+#### Windows (Git Bash)
+source venv/Scripts/activate
+
+#### Linux / macOS
+source venv/bin/activate
+
+## Rodando os testes
+
+Com o ambiente virtual ativo:
+
+```bash
+pytest
+```
+
+### Autenticação
+
+A rota `/people` requer autenticação via header:
+
+Authorization: Bearer <API_TOKEN>
+
+Rotas públicas:
+- `/`
+- `/films`
