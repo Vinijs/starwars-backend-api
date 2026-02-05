@@ -65,10 +65,40 @@ pytest
 
 ### Autenticação
 
-A rota `/people` requer autenticação via header:
+As rotas protegidas exigem autenticação via Bearer Token.
 
-Authorization: Bearer <API_TOKEN>
+Exemplo de header:
 
-Rotas públicas:
-- `/`
-- `/films`
+Authorization: Bearer SEU_TOKEN_FIXO
+
+Ferramentas compatíveis:
+- Postman
+- Insomnia
+- curl
+- HTTP clients em geral
+
+Obs: navegadores não permitem envio de headers customizados diretamente.
+
+### Rotas protegidas
+
+As seguintes rotas exigem autenticação:
+
+- GET /people
+- GET /planets
+- GET /starships
+
+## Exemplos de uso
+
+```http
+GET /films
+GET /films?search=hope
+GET /people?page=2
+GET /people?order=name
+```
+
+## Deploy
+
+A aplicação foi preparada para deploy serverless no Google Cloud Platform (GCP),
+utilizando Cloud Functions e API Gateway.
+
+O deploy será realizado utilizando Python 3.11 e arquitetura serverless.
