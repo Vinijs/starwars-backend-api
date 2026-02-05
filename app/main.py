@@ -75,3 +75,7 @@ def starships():
         
     
     return jsonify(data)
+
+def app_entry_point(request):
+    return app
+

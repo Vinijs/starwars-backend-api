@@ -96,9 +96,25 @@ GET /people?page=2
 GET /people?order=name
 ```
 
-## Deploy
+## 🚀 Status de Implantação (Google Cloud Platform)
 
-A aplicação foi preparada para deploy serverless no Google Cloud Platform (GCP),
-utilizando Cloud Functions e API Gateway.
+Este projeto foi desenvolvido para ser executado como uma **Google Cloud Function (2ª Geração)** integrada ao **API Gateway**.
 
-O deploy será realizado utilizando Python 3.11 e arquitetura serverless.
+### Relatório de Infraestrutura e Obstáculos
+O código-fonte está 100% operacional e preparado para o ambiente de produção. Durante a fase de deploy, foi identificado um impedimento externo relacionado às políticas de faturamento (Billing) da plataforma Google Cloud para contas individuais no Brasil:
+
+* **Diagnóstico:** O projeto está configurado e vinculado ao SDK (`gcloud`), mas a ativação das APIs necessárias (`Cloud Functions`, `Cloud Build`, `Artifact Registry`) requer uma conta de faturamento ativa.
+* **Impedimento Técnico:** As políticas atuais do GCP para perfis CPF exigem um aporte inicial pré-pago (via Pix) ou validação de cartão internacional. Devido a instabilidades na comunicação entre o gateway de pagamento do Google e a operadora do cartão (Erro `OR_MIVEM_02`), o provisionamento dos recursos de nuvem foi interrompido.
+* **Solução Local:** Para garantir a avaliação da lógica e funcionalidade, o projeto pode ser executado localmente via Docker ou ambiente virtual Python (ver instruções abaixo). O código está pronto para deploy imediato assim que um ambiente com Billing ativo for fornecido.
+
+---
+
+## 🛠️ Como executar localmente
+
+Caso deseje validar a API sem o ambiente GCP, siga os passos:
+
+1. **Clonar o repositório:**
+   ```bash
+   git clone [URL_DO_REPOSITORIO]
+   cd starwars-backend-api
+   ```
